@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="viewport" content="width=320, user-scalable=yes">
+	<title>College Scores</title>
+  <style type="text/css" media="screen">
+    .game{
+      
+    }
+  </style>
+  
+  
+	
+</head>
+
+<body>
+
+  <% %w{current upcoming completed}.each do |type| %>
+    <h2><%= type.capitalize %></h2>
+    <% @scores.send(type + "_games").each do |game| %>
+    <div class="game">
+      <h3><%= game.time_left %></h3>
+      <dl>
+        <dt><%= game.team1[:name] %></dt>
+        <dd><%= game.team1[:score] %></dd>
+        <dt><%= game.team2[:name] %></dt>
+        <dd><%= game.team2[:score] %></dd>
+      </dl>
+    </div>
+    <% end %>
+  <% end %>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
