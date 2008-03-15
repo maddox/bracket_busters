@@ -16,11 +16,20 @@ require 'cbs_scores'
 
 
 get "/" do
+  # @team = Team.find(:all).each { |team| puts team }
+  @scores = CbsScores.new(:mens_basketball)
 
+  erb :index, :layout => 'default.erb'
+end
 
-# @team = Team.find(:all).each { |team| puts team }
-@scores = CbsScores.new(:mens_basketball)
+get "/search" do
+  @scores = CbsScores.new(:mens_basketball)
+  @games = []
 
-erb :index
+  @scores.games.each do |game|
+    @games << game if (game.team1[:name] =~ /#{params[:team]}/i || game.team2[:name] =~ /#{params[:team]}/i)
+  end
+
+  erb :search, :layout => 'default.erb'
 end
 
