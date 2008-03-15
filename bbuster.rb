@@ -4,6 +4,7 @@ require 'rubygems'
 require 'sinatra'
 require 'cbs_scores'
 
+layout 'default.erb'
 static '/iui', 'iui'
 
 Sinatra::StaticEvent::MIME_TYPES.merge!({'js' => 'application/x-javascript'}) 
