@@ -4,7 +4,7 @@ require 'rubygems'
 require 'sinatra'
 # require 'active_record'
 require 'cbs_scores'
-require 'team'
+# require 'team'
 
 # ActiveRecord::Base.establish_connection( 
 #   :adapter => "mysql", 
