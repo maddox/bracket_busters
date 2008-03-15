@@ -14,6 +14,12 @@ require 'cbs_scores'
 #   :host => '127.0.0.1'
 # ) 
 
+layout 'default.erb'
+static '/iui', 'iui'
+
+Sinatra::StaticEvent::MIME_TYPES.merge!({'js' => 'application/x-javascript'}) 
+
+
 
 get "/" do
   # @team = Team.find(:all).each { |team| puts team }
@@ -30,6 +36,6 @@ get "/search" do
     @games << game if (game.team1[:name] =~ /#{params[:team]}/i || game.team2[:name] =~ /#{params[:team]}/i)
   end
 
-  erb :search, :layout => 'default.erb'
+  erb :search
 end
 

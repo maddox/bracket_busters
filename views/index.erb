@@ -1,16 +1,37 @@
-    
-    <% %w{current upcoming completed}.each do |type| %>
-      <h2><%= type.capitalize %></h2>
-      <% @scores.send(type + "_games").each do |game| %>
-      <div class="game">
-        <h3><%= game.time_left %></h3>
-        <dl>
-          <dt><%= game.team1[:name] %></dt>
-          <dd <%= game.team1[:score].to_i >= game.team2[:score].to_i ? 'class="winning"' : '' %>><%= game.team1[:score] %></dd>
-          <dt><%= game.team2[:name] %></dt>
-          <dd <%= game.team2[:score].to_i >= game.team1[:score].to_i ? 'class="winning"' : '' %>><%= game.team2[:score] %></dd>
-        </dl>
-      </div>
-      <% end %>
-    <% end %>
+<ul id="home" title="Games" selected="true">
+	<li><a href="#current">Current</a></li>
+	<li><a href="#completed">Completed</a></li>
+	<li><a href="#upcoming">Upcoming</a></li>
+</ul>
+
+<% %w{current upcoming completed}.each do |type| %>
+<ul id="<%= type %>" title="<%= "#{type.capitalize}" %>">
+  <% @scores.send(type + "_games").each do |game| %>
+  <li>
+    <h3><%= game.time_left %></h3>
+    <dl class="game clearfix">
+      <dt><%= game.team1[:name] %></dt>
+      <dd <%= game.team1[:score].to_i >= game.team2[:score].to_i ? 'class="winning"' : '' %>><%= game.team1[:score] %></dd>
+      <dt><%= game.team2[:name] %></dt>
+      <dd <%= game.team2[:score].to_i >= game.team1[:score].to_i ? 'class="winning"' : '' %>><%= game.team2[:score] %></dd>
+    </dl>
+  </li>
+  <% end %>
+</ul>
+<% end %>
+
+
+<form id="search_form" class="dialog" action="/search" method="get">
+  <fieldset>
+  	<h1>Game Search</h1>
+  	<a class="button leftButton" type="cancel">Cancel</a>
+  	<a class="button blueButton" type="submit">Search</a>
+
+  	<label for="team">Team:</label>
+  	<input type="text" name="team" id="team" />
+  </fieldset>
+</form>
+
+
+
 

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta id="viewport" name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    <title>Scores</title>
+    <script src="/iui/iui.js" type="text/javascript"></script>
+    <link href="/iui/iui.css" rel="stylesheet" type="text/css" media="all" />
+    
+    <style type="text/css" media="screen">
+      .game dt{
+        width: 250px;
+        margin-right: 10px;
+        float: left;
+      }
+
+      .game dd.winning{
+        color: #ff0000;
+      }
+      
+      .clearfix:after {
+          content: ".";
+          display: block;
+          height: 0;
+          clear: both;
+          visibility: hidden;
+      }
+
+      .clearfix {display: inline-block;}
+
+      /* Hides from IE-mac \*/
+      * html .clearfix {height: 1%;}
+      .clearfix {display: block;}
+      /* End hide from IE-mac */
+      
+    </style>
+    
+    
+</head>
+<body>
+    <div class="toolbar">
+        <h1 id="pageTitle"></h1>
+        <a id="backButton" class="button" href="#"></a>
+        <a class="button" href="#search_form">Search</a>
+    </div>
+
+    <%= yield %>
+</body>
+</html>
