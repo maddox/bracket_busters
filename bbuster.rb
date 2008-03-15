@@ -1,5 +1,5 @@
-$:.unshift File.dirname(__FILE__) + '/lib'
-$:.unshift File.dirname(__FILE__) + '/lib/cbs_sports'
+$LOAD_PATH.unshift File.dirname(__FILE__) + '/lib'
+$LOAD_PATH.unshift File.dirname(__FILE__) + '/lib/cbs_sports'
 require 'rubygems'
 require 'sinatra'
 # require 'active_record'
