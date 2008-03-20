@@ -1,6 +1,7 @@
 $LOAD_PATH.unshift File.dirname(__FILE__) + '/lib'
 $LOAD_PATH.unshift File.dirname(__FILE__) + '/lib/cbs_sports'
 require 'rubygems'
+require 'yaml'
 require 'sinatra'
 require 'cbs_scores'
 
@@ -11,8 +12,11 @@ Sinatra::StaticEvent::MIME_TYPES.merge!({'js' => 'application/x-javascript'})
 
 
 
+
+
 get "/" do
   @scores = CbsScores.new(:mens_basketball)
+  @winners = YAML::load( open("winners.yml") )["round_1"].split(',')
 
   erb :index, :layout => 'default.erb'
 end
