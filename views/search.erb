@@ -3,10 +3,10 @@
   <li>
     <h3><%= game.time_left %></h3>
     <dl class="game clearfix">
-      <dt><%= game.team1[:name] %></dt>
+      <dt class="<%= @winners.include?(game.team1[:name]) ? "my_pick" : '' %>"><%= "#{game.team1[:name]} #{game.team1[:rank]}" %></dt>
       <dd <%= game.team1[:score].to_i >= game.team2[:score].to_i ? 'class="winning"' : '' %>><%= game.team1[:score] %></dd>
-      <dt><%= game.team2[:name] %></dt>
-      <dd <%= game.team2[:score].to_i >= game.team1[:score].to_i ? 'class="winning"' : '' %>><%= game.team2[:score] %></dd>
+      <dt class="<%= @winners.include?(game.team2[:name]) ? "my_pick" : '' %>"><%= "#{game.team2[:name]} #{game.team2[:rank]}" %></dt>
+      <dd class="<%= game.team2[:score].to_i >= game.team1[:score].to_i ? 'winning' : '' %>"  ><%= game.team2[:score] %></dd>
     </dl>
   </li>
   <% end %>

@@ -23,6 +23,7 @@ end
 
 get "/search" do
   @scores = CbsScores.new(:mens_basketball)
+  @winners = YAML::load( open("winners.yml") )["round_1"].split(',')
   @games = []
 
   @scores.games.each do |game|
