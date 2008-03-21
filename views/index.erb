@@ -2,6 +2,7 @@
 	<li><a href="#current">Current</a></li>
 	<li><a href="#completed">Completed</a></li>
 	<li><a href="#upcoming">Upcoming</a></li>
+	<li><a href="#rounds">Rounds</a></li>
 </ul>
 
 <% %w{current upcoming completed}.each do |type| %>
@@ -10,9 +11,9 @@
   <li>
     <h3><%= game.time_left %></h3>
     <dl class="game clearfix">
-      <dt class="<%= @winners.include?(game.team1[:name]) ? "my_pick" : '' %>"><%= "#{game.team1[:name]} #{game.team1[:rank]}" %></dt>
+      <dt class="<%= @current_winners.include?(game.team1[:name]) ? "my_pick" : '' %>"><%= "#{game.team1[:name]} #{game.team1[:rank]}" %></dt>
       <dd <%= game.team1[:score].to_i >= game.team2[:score].to_i ? 'class="winning"' : '' %>><%= game.team1[:score] %></dd>
-      <dt class="<%= @winners.include?(game.team2[:name]) ? "my_pick" : '' %>"><%= "#{game.team2[:name]} #{game.team2[:rank]}" %></dt>
+      <dt class="<%= @current_winners.include?(game.team2[:name]) ? "my_pick" : '' %>"><%= "#{game.team2[:name]} #{game.team2[:rank]}" %></dt>
       <dd class="<%= game.team2[:score].to_i >= game.team1[:score].to_i ? 'winning' : '' %>"  ><%= game.team2[:score] %></dd>
     </dl>
   </li>
@@ -33,5 +34,49 @@
 </form>
 
 
+<ul id="rounds" title="Rounds">
+	<li><a href="#round_1">Round 2</a></li>
+	<li><a href="#sweet_16">Sweet Sixteen</a></li>
+	<li><a href="#elite_8">Elite Eight</a></li>
+	<li><a href="#final_4">Final Four</a></li>
+	<li><a href="#championship">Championship Game</a></li>
+	<li><a href="#champion">Champion</a></li>
+</ul>
+
+<ul id="round_1" title="Round 2">
+<% @all_winners["round_1"].split(',').each do |team| %>
+	<li><%= team %></li>
+<% end %>
+</ul>
+
+<ul id="sweet_16" title="Sweet 16">
+<% @all_winners["round_2"].split(',').each do |team| %>
+	<li><%= team %></li>
+<% end %>
+</ul>
+
+<ul id="elite_8" title="Elite 8">
+<% @all_winners["round_3"].split(',').each do |team| %>
+	<li><%= team %></li>
+<% end %>
+</ul>
+
+<ul id="final_4" title="Final Four">
+<% @all_winners["round_4"].split(',').each do |team| %>
+	<li><%= team %></li>
+<% end %>
+</ul>
+
+<ul id="championship" title="Championship">
+<% @all_winners["round_5"].split(',').each do |team| %>
+	<li><%= team %></li>
+<% end %>
+</ul>
+
+<ul id="champion" title="Champion">
+<% @all_winners["round_6"].split(',').each do |team| %>
+	<li><%= team %></li>
+<% end %>
+</ul>
 
 

@@ -39,7 +39,8 @@ def get_scores
 end
 
 def get_winners
-  @winners = YAML::load( open("winners.yml") )[get_round].split(',')
+  @current_winners = YAML::load( open("winners.yml") )[get_round].split(',')
+  @all_winners = YAML::load( open("winners.yml") )
 end
 
 def get_round
